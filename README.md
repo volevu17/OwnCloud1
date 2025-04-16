@@ -103,6 +103,7 @@ sudo nano /etc/apache2/sites-available/000-default.conf
 </div>
 
 **1. Thay đổi bằng tên miền thực tế của quý khách**
+
 **2. Chọn thư mục gốc**
 
 - Sau đó, quý khách lưu và đóng tệp.
@@ -112,39 +113,46 @@ sudo nano /etc/apache2/sites-available/000-default.conf
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/011.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-- Tiếp theo, hãy mở trình duyệt web trên máy tính cá nhân và nhập tên miền đã đăng ký hoặc chỉ cần nhập địa chỉ IP công khai của máy chủ vào thanh URL.
+### Bước 5: Truy cập giao diện cài đặt ownCLoud
+- Tiếp theo, quý khách hãy mở trình duyệt web trên máy tính cá nhân và nhập tên miền đã cấu hình hoặc địa chỉ IP công khai của máy chủ vào thanh địa chỉ trình duyệt (URL).
 
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/012.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-- Sau đó quý khách đăng ký tài khoản admin
-   - **Database user:** Quý khách đăng nhập bằng user đã tạo khi tạo người dùng cơ sở dữ liệu
-   - **Database password:** Quý khách đăng nhập bằng password đã tạo khi tạo người dùng cơ sở dữ liệu
-   - **Database name:** Quý khách nhập tên cơ sở dữ liệu đã tạo ở trên
-- Sau đó quý khách chọn *Finish setup* để kết thúc.
+Giao diện thiết lập ban đầu của ownCloud sẽ xuất hiện. Tại đây, quý khách vui lòng thực hiện các bước sau:
+- **Tạo tài khoản quản trị viên (admin)** bằng cách nhập tên đăng nhập và mật khẩu mong muốn.
+- Trong phần Thiết lập cơ sở dữ liệu, điền các thông tin như sau:
+   - **Database user:** Tên người dùng cơ sở dữ liệu đã tạo ở bước trước.
+   - **Database password:** Mật khẩu tương ứng với người dùng cơ sở dữ liệu.
+   - **Database name:** Tên cơ sở dữ liệu đã được tạo.
+- Sau khi hoàn tất, Quý khách nhấn vào nút Finish setup để hoàn tất quá trình cài đặt.
 
-- Sau khi setup sẽ xuất hiện giao diện login. Quý khách hãy đăng nhập tài khoản vừa tạo
+### Bước 6: Đăng nhập và hoàn tất cấu hình 
 
+- Sau khi cài đặt hoàn tất, giao diện đăng nhập sẽ xuất hiện. Quý khách hãy đăng nhập bằng tài khoản quản trị viên vừa tạo ở bước trước.
+
+
+<div align="center">
+  <img src="https://github.com/volevu17/OwnCloud1/blob/main/013.png?raw=true" alt="Demo Image" width="800"/>
+</div>
+
+- Khi đăng nhập thành công, điều này đồng nghĩa với việc quý khách đã hoàn tất quá trình cài đặt ownCloud trên máy chủ Ubuntu.
+  
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/014.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-- Sau khi đăng nhập, quý khách đã cài đặt thành công ownCloud trên ubuntu
-  
-<div align="center">
-  <img src="https://github.com/volevu17/OwnCloud1/blob/main/015.png?raw=true" alt="Demo Image" width="800"/>
-</div>
-
 --------
 
-# II. Hướng dẫn add disk HDD vào Storage của ownCloud
+# II. Hướng dẫn thêm ổ đĩa HDD vào Storage của ownCloud
 
-Theo dõi bài viết (https://wiki.vndata.vn/cloud-vps/huong-dan-chung/vps-stor/) để **add thêm disk HDD vào VPS Storage** và **Mount Disk HDD bên trong OS Linux**
+Vui lòng tham khảo bài viết sau để (https://wiki.vndata.vn/cloud-vps/huong-dan-chung/vps-stor/) để **add thêm disk HDD vào VPS Storage** và **Mount Disk HDD bên trong OS Linux**
 
 *** Bước 1: Kiểm tra quyền truy cập thư mục
 
-Để phân quyền cho *web server* có quyền truy cập vào thư mục /mnt/*tên thư mục đã mount*, quý khách sử dụng 2 lệnh:
+Để đảm bảo web server (Apache) có thể truy cập được thư mục mount, quý khách hãy chạy các lệnh sau:
+
 ```bash
 sudo chown -R www-data:www-data /mnt/data
 ```
@@ -152,67 +160,76 @@ sudo chown -R www-data:www-data /mnt/data
 sudo chmod -R 755 /mnt/data
 ```
 <div align="center">
-  <img src="https://github.com/volevu17/OwnCloud1/blob/main/016.png?raw=true" alt="Demo Image" width="800"/>
+  <img src="https://github.com/volevu17/OwnCloud1/blob/main/015.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-- Sau khi cấp quyền, quý khách kiểm tra bằng lệnh
+- Sau đó kiểm tra quyền truy cập thư mục bằng lệnh:
 ```bash
   ls -ld /mnt/data
   ```
 
 <div align="center">
-  <img src="https://github.com/volevu17/OwnCloud1/blob/main/017.png?raw=true" alt="Demo Image" width="800"/>
+  <img src="https://github.com/volevu17/OwnCloud1/blob/main/016.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
 *** Bước 2: Cho phép sử dụng ổ đĩa local
-- Quý khách mở file cấu hình bằng lệnh
+- Quý khách mở file cấu hình của ownCloud bằng lệnh
 ```bash
 sudo nano /var/www/html/owncloud/config/config.php
 ```
 - Thêm dòng sau vào file cấu hình *'files_external_allow_create_new_local' => true,* để thêm Local vào danh sách **allowed external storage types**.
 
 <div align="center">
+  <img src="https://github.com/volevu17/OwnCloud1/blob/main/017.png?raw=true" alt="Demo Image" width="800"/>
+</div>
+
+- Sau đó lưu file và khởi động lại Apache bằng lệnh:
+
+```bash
+sudo systemctl restart apache2
+```
+
+<div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/018.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-- Sau đó lưu file và khởi động lại Apache bằng lệnh: *sudo systemctl restart apache2*
+### Bước 3: Cấu hình ổ đĩa trong ownCloud
+
+- Quý khách truy cập vào trình duyệt ownCloud của quý khách và chọn *Setting* và làm theo hướng dẫn:
 
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/019.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-- Sau đó quý khách truy cập vào trình duyệt ownCloud của quý khách và chọn *Setting* và làm theo hướng dẫn:
+- Trong phần **External storage** chọn **Local**
+- Nhập đường dẫn đến thư mục đã mount ở phần **Configuration**
 
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/020.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-- Ở phần **External storage** chọn **Local*
-- Sau đó nhập đường dẫn thư mục được mount vào **Configuration**
+- Quý khách đã hoàn thành việc *add disk HDD vào Storage của ownCloud*
+
+### Bước 4: Kiểm tra và sử dụng ổ đĩa
+  
+- Quý khách quay lại giao diện chính của ownCloud, chọn thư mục **Local**
 
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/021.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-- Quý khách đã hoàn thành việc *add disk HDD vào Storage của ownCloud*
+- Quý khách click **Upload** để tải tệp lên thư mục **Local**
 
-- Để kiểm tra quý khách thực hiển theo các bước sau:
-  
-- Quý khách quay lại giao diện chính của ownCloud và chọn file *Local*
-<div align="center">
+ <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/022.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-- Quý khách chọn *upload* để upload file vào **Local**
-
+- Sau khi upload xong quý khách truy cập VPS qua terminal và chạy lệnh sau để xác minh tệp vừa upload:
+```bash
+  ls -l /mnt/data
+```
  <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/023.png?raw=true" alt="Demo Image" width="800"/>
-</div>
-
-- Sau khi upload xong quý khách vào console của VPS dùng lệnh *ls -l /mnt/*thư mục được mount** để kiểm tra
-
- <div align="center">
-  <img src="https://github.com/volevu17/OwnCloud1/blob/main/024.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
   
