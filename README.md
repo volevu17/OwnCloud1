@@ -1,5 +1,8 @@
 # I. CÀI ĐẶT VÀ CẤU HÌNH OWNCLOUD TRÊN VPS SOTRAGE
 
+*Kính chào Quý khách,*
+Sau đây là hướng dẫn cài đặt và cấu hình ownCloud trên máy chủ ảo Cloud VPS. Quý khách vui lòng thực hiện theo từng bước như sau để đảm bảo quá trình cài đặt diễn ra thuận lợi.
+
 
 ### 1. ownCloud là gì?
 
@@ -7,9 +10,7 @@ ownCloud là ứng dụng web lưu trữ tệp, đồng bộ tệp và cộng t�
 
 Tương tự như các dịch vụ lưu trữ đám mây như Dropbox, Google Drive, One Drive cùng nhiều dịch vụ khác, ownCloud cho phép bạn lưu trữ tệp và chia sẻ chúng với bất kỳ ai trên Internet.
 
-*Kính chào quý khách,*
-
-Sau đây sẽ là hướng dẫn cài đặt và cấu hình ownCloud trên máy chủ ảo Cloud VPS. Quý khách vui lòng thực hiện theo các bước sau:
+### 2. Các bước cài đặt ownCloud trên Ubuntu VPS
 
 ### Bước 1: Cài đặt MySQL trên Ubuntu
 
@@ -41,7 +42,9 @@ Nhập mật khẩu root MySQL mà bạn đã tạo trước đó khi được y
 ## Bước 3: Cài đặt PHP 
 
 Quý cần cài đặt PHP cùng với tất cả các module cần thiết mà ownCloud yêu cầu. Quý khách có thể sử dụng câu lệnh 
-*apt install php7.4 php7.4-cli php7.4-common php7.4-curl php7.4-gd php7.4-mysql php7.4-xml php7.4-zip php7.4-mbstring php7.4-bcmath php7.4-intl php7.4-imagick php7.4-apcu php7.4-redis php7.4-soap libapache2-mod-php7.4 -y*
+```bash
+sudo apt install php7.4 php7.4-cli php7.4-common php7.4-curl php7.4-gd php7.4-mysql php7.4-xml php7.4-zip php7.4-mbstring php7.4-bcmath php7.4-intl php7.4-imagick php7.4-apcu php7.4-redis php7.4-soap libapache2-mod-php7.4 -y
+```
 
 Ở hướng dẫn này là cài đặt **PHP 7.4**.
 
@@ -77,7 +80,11 @@ Với phần mềm máy chủ web, máy chủ cơ sở dữ liệu và tiện í
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/008.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-- Quý khách chạy lệnh *sudo unzip **tên tệp vừa tải xuống*** để giải nén tệp.
+- Quý khách chạy lệnh sau để giải nén tệp.
+
+```bash
+sudo unzip tên tệp vừa tải xuống
+```
 
 - Tiếp theo, quý khách cấp cho Apache quyền đọc và ghi vào thư mục mới bằng lệnh *sudo chown -R www-data:www-data owncloud/*
 
@@ -85,8 +92,11 @@ Với phần mềm máy chủ web, máy chủ cơ sở dữ liệu và tiện í
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/009.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-- Tiếp theo chỉnh sửa tệp cấu hình máy chủ ảo Apache mặc định 000-default.confvà tạo **/var/www/html/owncloud/** thư mục gốc cho tên miền của bạn. Thay thế *cloud.example.com* bằng tên miền thực tế của quý khách.
-Quý khách chạy lệnh **sudo nano /etc/apache2/sites-available/000-default.conf** để chỉnh sửa.
+- Tiếp theo chỉnh sửa tệp cấu hình máy chủ ảo Apache mặc định 000-default.conf và tạo **/var/www/html/owncloud/** thư mục gốc cho tên miền của bạn. Thay thế *cloud.example.com* bằng tên miền thực tế của quý khách.
+Quý khách chạy lệnh sau để chỉnh sửa.
+```bash
+sudo nano /etc/apache2/sites-available/000-default.conf
+```
 
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/010.png?raw=true" alt="Demo Image" width="800"/>
@@ -135,23 +145,30 @@ Theo dõi bài viết (https://wiki.vndata.vn/cloud-vps/huong-dan-chung/vps-stor
 *** Bước 1: Kiểm tra quyền truy cập thư mục
 
 Để phân quyền cho *web server* có quyền truy cập vào thư mục /mnt/*tên thư mục đã mount*, quý khách sử dụng 2 lệnh:
-
-*sudo chown -R www-data:www-data /mnt/data*
-*sudo chmod -R 755 /mnt/data*
-
+```bash
+sudo chown -R www-data:www-data /mnt/data
+```
+```bash
+sudo chmod -R 755 /mnt/data
+```
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/016.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-- Sau khi cấp quyền, quý khách kiểm tra bằng lệnh *ls -ld /mnt/data*
-  
+- Sau khi cấp quyền, quý khách kiểm tra bằng lệnh
+```bash
+  ls -ld /mnt/data
+  ```
 
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/017.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
 *** Bước 2: Cho phép sử dụng ổ đĩa local
-- Quý khách mở file cấu hình *sudo nano /var/www/html/owncloud/config/config.php*
+- Quý khách mở file cấu hình bằng lệnh
+```bash
+sudo nano /var/www/html/owncloud/config/config.php
+```
 - Thêm dòng sau vào file cấu hình *'files_external_allow_create_new_local' => true,* để thêm Local vào danh sách **allowed external storage types**.
 
 <div align="center">
