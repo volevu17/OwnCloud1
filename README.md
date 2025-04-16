@@ -115,6 +115,7 @@ sudo nano /etc/apache2/sites-available/000-default.conf
 
 **2. Chọn thư mục gốc**
 
+
 - Sau đó, quý khách lưu và đóng tệp.
 
 - Khởi động lại Apche để những thay đổi có hiệu lực.
