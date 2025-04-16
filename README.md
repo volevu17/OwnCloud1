@@ -153,7 +153,7 @@ Giao diện thiết lập ban đầu của ownCloud sẽ xuất hiện. Tại đ
 
 Vui lòng tham khảo bài viết sau để (https://wiki.vndata.vn/cloud-vps/huong-dan-chung/vps-stor/) để **add thêm disk HDD vào VPS Storage** và **Mount Disk HDD bên trong OS Linux**
 
-*** Bước 1: Kiểm tra quyền truy cập thư mục
+ ### Bước 1: Kiểm tra quyền truy cập thư mục
 
 Để đảm bảo web server (Apache) có thể truy cập được thư mục mount, quý khách hãy chạy các lệnh sau:
 
@@ -176,7 +176,7 @@ sudo chmod -R 755 /mnt/data
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/016.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-*** Bước 2: Cho phép sử dụng ổ đĩa local
+### Bước 2: Cho phép sử dụng ổ đĩa local
 - Quý khách mở file cấu hình của ownCloud bằng lệnh
 ```bash
 sudo nano /var/www/html/owncloud/config/config.php
