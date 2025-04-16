@@ -34,9 +34,13 @@ Nhập mật khẩu root MySQL mà bạn đã tạo trước đó khi được y
 </div>
 
 **1. Tạo cơ sở dữ liệu mới cho ownCloud**
+
 **2. Tạo người dùng cơ sở dữ liệu mới và gán mật khẩu**
+
 **3. Cấp cho người dùng mới toàn quyền đối với cơ sở dữ liệu ownCloud**
+
 **4. Làm mới quyền của người dùng MySQL**
+
 **5. Thoát**
 
 ## Bước 3: Cài đặt PHP 
