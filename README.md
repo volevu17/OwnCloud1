@@ -58,13 +58,13 @@ sudo apt install php7.4 php7.4-cli php7.4-common php7.4-curl php7.4-gd php7.4-my
 
 ### Bước 4: Cào đặt Owncloud
 
-Quý khách phải vào trang chủ của ownCloud (https://owncloud.com/) sau đó chọn vào *Download Server* và copy đường dẫn.
+Quý khách phải vào trang chủ của ownCloud (https://owncloud.com/) sau đó chọn vào *Download Server* và copy đường dẫn tải về phiên bản mới nhất.
 
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/005.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-Với phần mềm máy chủ web, máy chủ cơ sở dữ liệu và tiện ích mở rộng PHP được cài đặt trên máy chủ của quý khách, Owncloud hiện có thể chạy mà không gặp bất kỳ khó khăn nào. Để bắt đầu cài đặt thông qua trình duyệt web, quý khách phải tải xuống phiên bản mới nhất của Owncloud bằng wget trên máy chủ Ubuntu của mình.
+Trên máy chủ Ubuntu, sử dụng `wget` để tải ownCloud về máy:
 
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/006.png?raw=true" alt="Demo Image" width="800"/>
@@ -76,7 +76,9 @@ Với phần mềm máy chủ web, máy chủ cơ sở dữ liệu và tiện í
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/007.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-- Sau đó *cd /var/www/html/* và dùng lệnh *ls* để xác nhận sự tồn tại của tập tin đã di chuyển.
+- Truy cập *cd /var/www/html/* và dùng lệnh *ls* để xác nhận sự tồn tại của tập tin đã di chuyển.
+
+**Cài đặt công cụ giải nén và giải nén ownCloud**
 
 - Cài đặt *unzip* để hỗ trợ giải nén tệp
 
@@ -90,14 +92,17 @@ Với phần mềm máy chủ web, máy chủ cơ sở dữ liệu và tiện í
 sudo unzip tên tệp vừa tải xuống
 ```
 
-- Tiếp theo, quý khách cấp cho Apache quyền đọc và ghi vào thư mục mới bằng lệnh *sudo chown -R www-data:www-data owncloud/*
-
+- Tiếp theo, quý khách Cấp quyền cho Apache truy cập thư mục ownCloud bằng lệnh:
+```bash
+  *sudo chown -R www-data:www-data owncloud/*
+```
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/009.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-- Tiếp theo chỉnh sửa tệp cấu hình máy chủ ảo Apache mặc định 000-default.conf và tạo **/var/www/html/owncloud/** thư mục gốc cho tên miền của bạn. Thay thế *cloud.example.com* bằng tên miền thực tế của quý khách.
-Quý khách chạy lệnh sau để chỉnh sửa.
+**Cấu hình Virtual Host cho ownCloud**
+
+Chỉnh sửa file cấu hình mặc định của Apache bằng lệnh:
 ```bash
 sudo nano /etc/apache2/sites-available/000-default.conf
 ```
