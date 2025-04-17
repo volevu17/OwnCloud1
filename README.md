@@ -1,6 +1,7 @@
 # I. CÀI ĐẶT VÀ CẤU HÌNH OWNCLOUD TRÊN VPS SOTRAGE
 
 *Kính chào Quý khách,*
+
 Sau đây là hướng dẫn cài đặt và cấu hình ownCloud trên máy chủ ảo Cloud VPS. Quý khách vui lòng thực hiện theo từng bước như sau để đảm bảo quá trình cài đặt diễn ra thuận lợi.
 
 
@@ -11,7 +12,10 @@ ownCloud là ứng dụng web lưu trữ tệp, đồng bộ tệp và cộng t�
 Tương tự như các dịch vụ lưu trữ đám mây như Dropbox, Google Drive, One Drive cùng nhiều dịch vụ khác, ownCloud cho phép bạn lưu trữ tệp và chia sẻ chúng với bất kỳ ai trên Internet.
 
 ### 2. Các bước cài đặt ownCloud trên Ubuntu VPS
-
+  
+  ### 2.1. Cài đặt môi trường 
+  
+ownCloud yêu cầu cơ sở dữ liệu MySQL và cài đặt PHP. 
 ### Bước 1: Cài đặt MySQL trên Ubuntu
 
 <div align="center">
@@ -20,12 +24,12 @@ Tương tự như các dịch vụ lưu trữ đám mây như Dropbox, Google Dr
 
 ### Bước 2: Tạo cơ sở dữ liệu MySQL
 
+Để tạo cơ sở dữ liệu, hãy đăng nhập vào bảng điều khiển MySQL, bằng lệnh *mysql -u root -p*
+
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/002.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-
-ownCloud yêu cầu cơ sở dữ liệu MySQL. Để tạo cơ sở dữ liệu, hãy đăng nhập vào bảng điều khiển MySQL, bằng lệnh *mysql -u root -p*
 
 Nhập mật khẩu root MySQL mà bạn đã tạo trước đó khi được yêu cầu. Sau khi đăng nhập, quý khách hãy làm theo các bước sau:
 
@@ -45,20 +49,23 @@ Nhập mật khẩu root MySQL mà bạn đã tạo trước đó khi được y
 
 ## Bước 3: Cài đặt PHP 
 
-Quý cần cài đặt PHP cùng với tất cả các module cần thiết mà ownCloud yêu cầu. Quý khách có thể sử dụng câu lệnh 
+Quý cần cài đặt PHP cùng với tất cả các module cần thiết mà ownCloud yêu cầu, ở hướng dẫn này là cài đặt **PHP 7.4**. 
+
+Quý khách có thể sử dụng câu lệnh 
+
 ```bash
 sudo apt install php7.4 php7.4-cli php7.4-common php7.4-curl php7.4-gd php7.4-mysql php7.4-xml php7.4-zip php7.4-mbstring php7.4-bcmath php7.4-intl php7.4-imagick php7.4-apcu php7.4-redis php7.4-soap libapache2-mod-php7.4 -y
 ```
 
-Ở hướng dẫn này là cài đặt **PHP 7.4**.
 
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/004.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-### Bước 4: Cào đặt Owncloud
+### 2.2. Cài đặt ownCloud
+   ### Bước 4: Cào đặt ownCloud
 
-Quý khách phải vào trang chủ của ownCloud (https://owncloud.com/) sau đó chọn vào *Download Server* và copy đường dẫn tải về phiên bản mới nhất.
+Quý khách phải vào trang chủ của ownCloud (https://owncloud.com/) sau đó đưa trỏ chuột vào **Download Server** và copy đường dẫn tải về phiên bản mới nhất.
 
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/005.png?raw=true" alt="Demo Image" width="800"/>
@@ -76,7 +83,11 @@ Trên máy chủ Ubuntu, sử dụng `wget` để tải ownCloud về máy:
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/007.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-- Truy cập *cd /var/www/html/* và dùng lệnh *ls* để xác nhận sự tồn tại của tập tin đã di chuyển.
+- Truy cập
+```bash
+  cd /var/www/html/
+```
+Và dùng lệnh *ls* để xác nhận sự tồn tại của tập tin đã di chuyển.
 
 **Cài đặt công cụ giải nén và giải nén ownCloud**
 
@@ -89,12 +100,12 @@ Trên máy chủ Ubuntu, sử dụng `wget` để tải ownCloud về máy:
 - Quý khách chạy lệnh sau để giải nén tệp.
 
 ```bash
-sudo unzip tên tệp vừa tải xuống
+sudo unzip <tên tệp vừa tải xuống>
 ```
 
 - Tiếp theo, quý khách Cấp quyền cho Apache truy cập thư mục ownCloud bằng lệnh:
 ```bash
-  *sudo chown -R www-data:www-data owncloud/*
+  sudo chown -R www-data:www-data owncloud/
 ```
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/009.png?raw=true" alt="Demo Image" width="800"/>
@@ -123,7 +134,7 @@ sudo nano /etc/apache2/sites-available/000-default.conf
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/011.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
-### Bước 5: Truy cập giao diện cài đặt ownCLoud
+### Bước 5: Truy cập giao diện cài đặt ownCloud
 - Tiếp theo, quý khách hãy mở trình duyệt web trên máy tính cá nhân và nhập tên miền đã cấu hình hoặc địa chỉ IP công khai của máy chủ vào thanh địa chỉ trình duyệt (URL).
 
 <div align="center">
@@ -148,11 +159,6 @@ Giao diện thiết lập ban đầu của ownCloud sẽ xuất hiện. Tại đ
 </div>
 
 - Khi đăng nhập thành công, điều này đồng nghĩa với việc quý khách đã hoàn tất quá trình cài đặt ownCloud trên máy chủ Ubuntu.
-  
-<div align="center">
-  <img src="https://github.com/volevu17/OwnCloud1/blob/main/014.png?raw=true" alt="Demo Image" width="800"/>
-</div>
-
 --------
 
 # II. Hướng dẫn thêm ổ đĩa HDD vào Storage của ownCloud
@@ -187,7 +193,11 @@ sudo chmod -R 755 /mnt/data
 ```bash
 sudo nano /var/www/html/owncloud/config/config.php
 ```
-- Thêm dòng sau vào file cấu hình *'files_external_allow_create_new_local' => true,* để thêm Local vào danh sách **allowed external storage types**.
+- Thêm dòng sau vào file cấu hình
+```bash
+  'files_external_allow_create_new_local' => true,
+```
+Để thêm Local vào danh sách **allowed external storage types**.
 
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/017.png?raw=true" alt="Demo Image" width="800"/>
@@ -205,7 +215,7 @@ sudo systemctl restart apache2
 
 ### Bước 3: Cấu hình ổ đĩa trong ownCloud
 
-- Quý khách truy cập vào trình duyệt ownCloud của quý khách và chọn *Setting* và làm theo hướng dẫn:
+- Quý khách truy cập vào trình duyệt ownCloud của quý khách và chọn *Settings* và làm theo hướng dẫn:
 
 <div align="center">
   <img src="https://github.com/volevu17/OwnCloud1/blob/main/019.png?raw=true" alt="Demo Image" width="800"/>
@@ -223,10 +233,6 @@ sudo systemctl restart apache2
 ### Bước 4: Kiểm tra và sử dụng ổ đĩa
   
 - Quý khách quay lại giao diện chính của ownCloud, chọn thư mục **Local**
-
-<div align="center">
-  <img src="https://github.com/volevu17/OwnCloud1/blob/main/021.png?raw=true" alt="Demo Image" width="800"/>
-</div>
 
 - Quý khách click **Upload** để tải tệp lên thư mục **Local**
 
