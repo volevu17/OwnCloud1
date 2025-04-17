@@ -176,7 +176,7 @@ sudo chown -R www-data:www-data /mnt/data
 sudo chmod -R 755 /mnt/data
 ```
 <div align="center">
-  <img src="https://github.com/volevu17/OwnCloud1/blob/main/015.png?raw=true" alt="Demo Image" width="800"/>
+  <img src="https://github.com/volevu17/OwnCloud1/blob/main/014.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
 - Sau đó kiểm tra quyền truy cập thư mục bằng lệnh:
@@ -185,7 +185,7 @@ sudo chmod -R 755 /mnt/data
   ```
 
 <div align="center">
-  <img src="https://github.com/volevu17/OwnCloud1/blob/main/016.png?raw=true" alt="Demo Image" width="800"/>
+  <img src="https://github.com/volevu17/OwnCloud1/blob/main/015.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
 ### Bước 2: Cho phép sử dụng ổ đĩa local
@@ -200,7 +200,7 @@ sudo nano /var/www/html/owncloud/config/config.php
 Để thêm Local vào danh sách **allowed external storage types**.
 
 <div align="center">
-  <img src="https://github.com/volevu17/OwnCloud1/blob/main/017.png?raw=true" alt="Demo Image" width="800"/>
+  <img src="https://github.com/volevu17/OwnCloud1/blob/main/016.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
 - Sau đó lưu file và khởi động lại Apache bằng lệnh:
@@ -210,7 +210,7 @@ sudo systemctl restart apache2
 ```
 
 <div align="center">
-  <img src="https://github.com/volevu17/OwnCloud1/blob/main/018.png?raw=true" alt="Demo Image" width="800"/>
+  <img src="https://github.com/volevu17/OwnCloud1/blob/main/017.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
 ### Bước 3: Cấu hình ổ đĩa trong ownCloud
@@ -218,14 +218,14 @@ sudo systemctl restart apache2
 - Quý khách truy cập vào trình duyệt ownCloud của quý khách và chọn *Settings* và làm theo hướng dẫn:
 
 <div align="center">
-  <img src="https://github.com/volevu17/OwnCloud1/blob/main/019.png?raw=true" alt="Demo Image" width="800"/>
+  <img src="https://github.com/volevu17/OwnCloud1/blob/main/018.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
 - Trong phần **External storage** chọn **Local**
 - Nhập đường dẫn đến thư mục đã mount ở phần **Configuration**
 
 <div align="center">
-  <img src="https://github.com/volevu17/OwnCloud1/blob/main/020.png?raw=true" alt="Demo Image" width="800"/>
+  <img src="https://github.com/volevu17/OwnCloud1/blob/main/019.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
 - Quý khách đã hoàn thành việc *add disk HDD vào Storage của ownCloud*
@@ -237,7 +237,7 @@ sudo systemctl restart apache2
 - Quý khách click **Upload** để tải tệp lên thư mục **Local**
 
  <div align="center">
-  <img src="https://github.com/volevu17/OwnCloud1/blob/main/022.png?raw=true" alt="Demo Image" width="800"/>
+  <img src="https://github.com/volevu17/OwnCloud1/blob/main/020.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
 - Sau khi upload xong quý khách truy cập VPS qua terminal và chạy lệnh sau để xác minh tệp vừa upload:
@@ -245,7 +245,7 @@ sudo systemctl restart apache2
   ls -l /mnt/data
 ```
  <div align="center">
-  <img src="https://github.com/volevu17/OwnCloud1/blob/main/023.png?raw=true" alt="Demo Image" width="800"/>
+  <img src="https://github.com/volevu17/OwnCloud1/blob/main/021.png?raw=true" alt="Demo Image" width="800"/>
 </div>
 
   
